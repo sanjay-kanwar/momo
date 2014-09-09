@@ -1,4 +1,3 @@
-
 var Momo = require('../models/momo');
 //Create a new Instance of the Momo Model
 exports.postMomos = function(req,res){
@@ -15,7 +14,7 @@ exports.postMomos = function(req,res){
 	 res.send(err)
 
 	res.json({message: "Momo added to the plate", data:momo});
-}):
+});
 };
 
 //Create endpoint /api/momos for GET
@@ -39,7 +38,7 @@ exports.getMomo = function(req,res){
 	res.send(err);
 	res.json({message:'One momo has been found', data:momo});
 });
-}:
+};
 
 //Upate a momo Object
 exports.putMomo = function(req,res){

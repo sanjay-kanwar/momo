@@ -2,9 +2,11 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-var expressValidator = require('express-validator');
-var Momo = require('./models/momo');
+var momoController = require('./controllers/momo');
+var userController = require('./controllers/user');
 
+var passport = require('passport');
+var authController = require('./controllers/auth');
 
 mongoose.connect('mongodb://localhost:27017/MomoDb');
 
@@ -20,6 +22,8 @@ extended: true
 //Use Env defined port or 3000
 var port= process.env.PORT || 3000;
 
+app.use(passport.initialize());
+
 //Create Express Router
 var router = express.Router();
 
@@ -30,6 +34,11 @@ router.route('/momos')
 router.route('/momos/:momo_id')
 	.get(momoController.getMomo)
 	.put(momoController.putMomo)
+
+
+router.route('/users')
+	.post(userController.postUsers)
+	.get(authController.isAuthenticated,userController.getUsers);
 
 //Register all routes with /api
 app.use('/api', router);

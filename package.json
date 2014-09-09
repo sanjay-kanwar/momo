@@ -2,8 +2,11 @@
   "name": "momo",
   "main": "server.js",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.8.1",
     "express": "~4.1.1",
-    "mongoose": "^3.8.15"
+    "mongoose": "^3.8.15",
+    "passport": "^0.2.1",
+    "passport-http": "^0.2.2"
   }
 }
